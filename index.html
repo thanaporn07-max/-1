@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Diode PRO - บทเรียนวงจรไฟฟ้า</title>
+
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body {
+
+      margin: 0;
+
+      background: #111827;
+
+      color: #e5e7eb;
+
+      font-family: Arial, sans-serif;
+
+    }
+
+    header {
+
+      padding: 28px 20px;
+
+      background: #1e293b;
+
+      border-bottom: 1px solid #334155;
+
+    }
+
+    header h1 { color: #53c5ed; margin: 0 0 10px; }
+
+    header p { color: #94a3b8; margin: 0; }
+
+    main { max-width: 900px; margin: auto; padding: 24px 16px; }
+
+    h2 { font-size: 25px; }
+
+    .lessons { display: grid; gap: 12px; }
+
+    button {
+
+      width: 100%;
+
+      padding: 20px;
+
+      border: 1px solid #334155;
+
+      border-radius: 14px;
+
+      background: #1e293b;
+
+      color: #cbd5e1;
+
+      text-align: left;
+
+      font-size: 17px;
+
+      cursor: pointer;
+
+    }
+
+    button.active, button:hover {
+
+      background: #214557;
+
+      border-color: #53c5ed;
+
+      color: #53c5ed;
+
+    }
+
+    #content {
+
+      margin-top: 24px;
+
+      padding: 24px;
+
+      background: #1e293b;
+
+      border-radius: 14px;
+
+      line-height: 1.8;
+
+    }
+
+    .circuit {
+
+      margin-top: 20px;
+
+      padding: 20px;
+
+      background: #111827;
+
+      border-radius: 12px;
+
+      text-align: center;
+
+      font-size: 19px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>ϟ Diode PRO</h1>
+
+    <p>บทเรียนวงจรไฟฟ้า</p>
+
+  </header>
+
+  <main>
+
+    <h2>วงจรพื้นฐาน</h2>
+
+    <div class="lessons">
+
+      <button class="active" onclick="showLesson(1,this)">
+
+        ① บทที่ 1: การต่อแบบพื้นฐาน
+
+      </button>
+
+      <button onclick="showLesson(2,this)">
+
+        ② บทที่ 2: ตัวต้านทานอนุกรม
+
+      </button>
+
+      <button onclick="showLesson(3,this)">
+
+        ③ บทที่ 3: ตัวต้านทานขนาน
+
+      </button>
+
+    </div>
+
+    <section id="content">
+
+      <h2>บทที่ 1: การต่อแบบพื้นฐาน</h2>
+
+      <p>เรียนรู้ส่วนประกอบของวงจรไฟฟ้าและการเชื่อมต่อเบื้องต้น</p>
+
+      <div class="circuit">
+
+        (+) ─── [ แหล่งจ่ายไฟ ] ─── [ R ] ─── (−)
+
+      </div>
+
+      <p>R คือ ตัวต้านทาน ทำหน้าที่จำกัดกระแสไฟฟ้า</p>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function showLesson(n, btn) {
+
+      document.querySelectorAll('.lessons button')
+
+        .forEach(b => b.classList.remove('active'));
+
+      btn.classList.add('active');
+
+      const lessons = {
+
+        1: ['การต่อแบบพื้นฐาน',
+
+            'เรียนรู้ส่วนประกอบของวงจรไฟฟ้าและการเชื่อมต่อเบื้องต้น',
+
+            'R คือ ตัวต้านทาน ทำหน้าที่จำกัดกระแสไฟฟ้า'],
+
+        2: ['ตัวต้านทานอนุกรม',
+
+            'การต่อตัวต้านทานเรียงกันในเส้นทางเดียวกัน กระแสไฟฟ้าเท่ากันทุกจุด',
+
+            'R รวม = R1 + R2 + R3'],
+
+        3: ['ตัวต้านทานขนาน',
+
+            'การต่อตัวต้านทานแยกเป็นหลายแขนง แรงดันไฟฟ้าเท่ากันทุกแขนง',
+
+            '1/R รวม = 1/R1 + 1/R2 + 1/R3']
+
+      };
+
+      const l = lessons[n];
+
+      document.getElementById('content').innerHTML =
+
+        '<h2>บทที่ ' + n + ': ' + l[0] + '</h2>' +
+
+        '<p>' + l[1] + '</p>' +
+
+        '<div class="circuit">วงจรไฟฟ้า: [ R1 ] ─── [ R2 ]</div>' +
+
+        '<p>' + l[2] + '</p>';
+
+    }
+
+  </script>
+
+</body>
+
+</html>
